@@ -5,14 +5,15 @@ export default class Logic extends Character {
     super(name, type);
     this.interval = interval;
     this.dope = false;
+    this.attack = 10;
   }
 
   set stoned(value) {
-    this.cdope = value;
+    this.dope = value;
   }
 
   get stoned() {
-    return this.cdope;
+    return this.dope;
   }
 
   set attack(value) {
@@ -23,9 +24,9 @@ export default class Logic extends Character {
     let damage = this.currentAttack * ((11 - this.interval) / 10);
 
     if (this.dope) {
-      damage -= (this.currentAttack - Math.log2(this.interval) * 5);
+      damage -= Math.log2(this.interval) * 5;
     }
-    if (this.attack > 0) {
+    if (damage > 0) {
       return Math.round(damage);
     }
     return 0;

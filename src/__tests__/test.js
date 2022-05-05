@@ -5,20 +5,21 @@ import Character from '../js/character';
 test('attack', () => {
   const mag = new Magician('Rick');
   mag.interval = 5;
-  mag.currentAttack = 20;
+  mag.attack = 20;
   expect(mag.attack).toBe(12);
+  expect(mag.stoned).toBeFalsy();
 });
 
-test('attack', () => {
+test('attack with dope', () => {
   const daemon = new Daemon('Rick');
-  daemon.interval = 5;
-  daemon.currentAttack = 64;
-  daemon.dope = true;
+  daemon.interval = 4;
+  daemon.attack = 64;
+  daemon.stoned = true;
 
-  expect(daemon.attack).toBe(33);
+  expect(daemon.attack).toBe(35);
 });
 
-test('attack', () => {
+test('attack < 0', () => {
   const daemon = new Daemon('Rick');
   daemon.interval = 5;
   daemon.currentAttack = -10;
